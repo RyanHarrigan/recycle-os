@@ -1,0 +1,60 @@
+version: '3.7'
+
+services:
+  back_end: # actual backend server
+    build:
+      context: ./app/backend
+      dockerfile: Dockerfile-apiserver
+    container_name: php_backend
+    restart: always
+    volumes:
+      - ./app/backend/php/code:/var/www/html # copy php code to the nginx server
+      - ./app/backend/nginx/ssl/ssl:/etc/ssl
+      - ./app/backend/nginx/default.template.conf:/etc/nginx/conf.d/default.template # template conf to copy from
+      - ./app/backend/nginx/default.conf:/etc/nginx/conf.d/default.conf # fail-safe conf
+      - ./app/backend/nginx/logs:/var/log/nginx
+    ports:
+      - 8000:80
+      - 3000:443
+    env_file:
+      - ./app/backend/.env
+    command: /bin/sh -c "envsubst '$$NGINX_HOST' < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+    depends_on:
+      - php_backend_fpm
+      - mysqldb
+  php_backend_fpm: # strictly used for debugging php
+    build:
+      context: ./app/backend
+      dockerfile: Dockerfile-fpmserver
+    container_name: php_backend_fpm
+    restart: always
+#    ports: # xdebug
+#      - 9001:9001
+    volumes:
+      - ./app/backend/php/code:/var/www/html # copy php code to the fpm gateway
+      - ./app/backend/.env:/var/www/html/.env # we should separate the values in this file from the actual app in production...
+#    command: ["composer", "install"]
+    tty: true
+    env_file:
+      - ./app/backend/.env
+  front_end:
+    build: ./app/frontend/
+    ports:
+      - 80:2424
+#      - 2424:2424
+    env_file:
+        - ./app/frontend/.env
+  mysqldb:
+    build: ./mysqldb/
+    container_name: mysqldb
+    restart: always
+    ports:
+      - 3307:3306 # exposes 3307 for debug purposes. DO NOT USE IN PRODUCTION
+#      - 3306
+    volumes:
+      - ./mysqldb/persistance:/var/lib/mysql
+      - ./mysqldb/init.sql:/docker-entrypoint-initdb.d # sql file for loading initial data
+    env_file:
+      - ./mysqldb/.env
+volumes:
+  persistent_data:

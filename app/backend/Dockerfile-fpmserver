@@ -1,0 +1,9 @@
+FROM nanoninja/php-fpm:7.4.0
+
+ENV APP_DIR=/var/www/html
+
+WORKDIR $APP_DIR
+
+ADD ./php/config/composer.phar /usr/local/bin/composer
+
+RUN chmod 755 /usr/local/bin/composer

@@ -1,0 +1,47 @@
+{
+  "name": "react-ing",
+  "version": "1.0.0",
+  "description": "donuts, cats, react, and such",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "webpack --watch",
+    "start": "nodemon server/index.js"
+  },
+  "author": "Matt",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel": "^6.23.0",
+    "babel-loader": "^8.0.6",
+    "file-loader": "^5.0.2",
+    "react": "^16.8.6",
+    "webpack": "^4.38.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.9.2",
+    "@material-ui/icons": "^4.5.1",
+    "@material-ui/lab": "^4.0.0-alpha.35",
+    "axios": "^0.19.0",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^4.4.1",
+    "contentful": "^7.10.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "lodash.merge": "^4.6.2",
+    "material-ui-icons": "^1.0.0-beta.36",
+    "mongodb": "^3.3.5",
+    "mongoose": "^5.7.13",
+    "nodemon": "^1.19.1",
+    "react-bootstrap": "^1.0.0-beta.16",
+    "react-dev": "0.0.1",
+    "react-dom": "^16.8.6",
+    "react-responsive-carousel": "^3.1.51",
+    "react-router-dom": "^5.0.1",
+    "typeface-roboto": "0.0.75"
+  }
+}
