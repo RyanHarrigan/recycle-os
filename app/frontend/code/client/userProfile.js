@@ -1,13 +1,13 @@
 import React from "react";
 
 const Profile = props => {
-  return(
+  return (
     <div className="bg-white shadow rounded overflow-hidden">
       <div className="px-4 pt-0 pb-4 bg-dark">
         <div className="media align-items-end profile-header">
           <div className="profile mr-3">
             <img
-              src="https://d19m59y37dris4.cloudfront.net/university/1-1-1/img/teacher-4.jpg"
+              src={props.data.profilePicture}
               alt="..."
               width={130}
               className="rounded mb-2 img-thumbnail"
@@ -17,13 +17,42 @@ const Profile = props => {
             </a>
           </div>
           <div className="media-body mb-5 text-white">
-            <h4 className="mt-0 mb-0">Manuella Tarly</h4>
+            <h4 className="mt-0 mb-0">
+              {props.data.firstName} {props.data.lastName}
+            </h4>
             <p className="small mb-4">
-              {" "}
               <i className="fa fa-map-marker mr-2" />
-              San Farcisco
+              Orlando
             </p>
           </div>
+          <div className="fa fa-map-marker mr-2 text-white">
+            Your badge:{" "}
+            {props.rank === 0 ? (
+              <img
+                width={200}
+                className="rounded mb-2 img-thumbnail"
+                src="https://files.slack.com/files-pri/T03E1AWDP-FTQMNB9TM/screen_shot_2020-02-15_at_2.29.19_pm.png"
+              />
+            ) : props.stats > 0 && props.stats < 10 ? (
+              <img
+                width={200}
+                className="rounded mb-2 img-thumbnail"
+                src="https://files.slack.com/files-pri/T03E1AWDP-FU4C5T0B0/screen_shot_2020-02-15_at_2.27.47_pm.png"
+              />
+            ) : props.stats >= 10 && props.stats < 100 ? (
+              <img
+                width={200}
+                className="rounded mb-2 img-thumbnail"
+                src="https://files.slack.com/files-pri/T03E1AWDP-FTS236KMF/screen_shot_2020-02-15_at_2.27.58_pm.png"
+              />
+            ) : (
+              <img
+                width={200}
+                className="rounded mb-2 img-thumbnail"
+                src="https://files.slack.com/files-pri/T03E1AWDP-FTS236KRP/screen_shot_2020-02-15_at_2.29.07_pm.png"
+              />
+            )}
+          </div>{" "}
         </div>
       </div>
       <div className="bg-light p-4 d-flex justify-content-end text-center">
@@ -88,8 +117,8 @@ const Profile = props => {
           <div className="p-4 bg-light rounded shadow-sm">
             <p className="font-italic mb-0">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-              minim veniam.
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam.
             </p>
             <ul className="list-inline small text-muted mt-3 mb-0">
               <li className="list-inline-item">
@@ -105,8 +134,7 @@ const Profile = props => {
         </div>
       </div>
     </div>
-    
-            )
+  );
 };
 
 export default Profile;
