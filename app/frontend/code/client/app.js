@@ -18,7 +18,7 @@ class App extends React.Component {
             "https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_960_720.png",
           firstName: "John",
           lastName: "Smith",
-          points: 420
+          points: 9001
         },
         {
           rfid: "002",
@@ -26,7 +26,7 @@ class App extends React.Component {
             "https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_960_720.png",
           firstName: "Will",
           lastName: "Smith",
-          points: 69
+          points: 420
         },
         {
           rfid: "003",
@@ -34,7 +34,7 @@ class App extends React.Component {
             "https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_960_720.png",
           firstName: "Amy",
           lastName: "Smith",
-          points: 25
+          points: 69
         },
         {
           rfid: "004",
@@ -42,7 +42,7 @@ class App extends React.Component {
             "https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_960_720.png",
           firstName: "Allen",
           lastName: "Smith",
-          points: 15
+          points: 5
         },
         {
           rfid: "005",

@@ -26,30 +26,30 @@ const Profile = props => {
             </p>
           </div>
           <div className="fa fa-map-marker mr-2 text-white">
-            Your badge:{" "}
+            Your badge({props.data.points} pts):{" "}
             {props.rank === 0 ? (
               <img
                 width={200}
                 className="rounded mb-2 img-thumbnail"
-                src="https://files.slack.com/files-pri/T03E1AWDP-FTQMNB9TM/screen_shot_2020-02-15_at_2.29.19_pm.png"
+                src="https://black-rob-place.s3.us-east-2.amazonaws.com/Screen+Shot+2020-02-15+at+2.29.19+PM.png"
               />
             ) : props.stats > 0 && props.stats < 10 ? (
               <img
                 width={200}
                 className="rounded mb-2 img-thumbnail"
-                src="https://files.slack.com/files-pri/T03E1AWDP-FU4C5T0B0/screen_shot_2020-02-15_at_2.27.47_pm.png"
+                src="https://black-rob-place.s3.us-east-2.amazonaws.com/Screen+Shot+2020-02-15+at+2.27.47+PM.png"
               />
             ) : props.stats >= 10 && props.stats < 100 ? (
               <img
                 width={200}
                 className="rounded mb-2 img-thumbnail"
-                src="https://files.slack.com/files-pri/T03E1AWDP-FTS236KMF/screen_shot_2020-02-15_at_2.27.58_pm.png"
+                src="https://black-rob-place.s3.us-east-2.amazonaws.com/Screen+Shot+2020-02-15+at+2.27.58+PM.png"
               />
             ) : (
               <img
                 width={200}
                 className="rounded mb-2 img-thumbnail"
-                src="https://files.slack.com/files-pri/T03E1AWDP-FTS236KRP/screen_shot_2020-02-15_at_2.29.07_pm.png"
+                src="https://black-rob-place.s3.us-east-2.amazonaws.com/Screen+Shot+2020-02-15+at+2.29.07+PM.png"
               />
             )}
           </div>{" "}
