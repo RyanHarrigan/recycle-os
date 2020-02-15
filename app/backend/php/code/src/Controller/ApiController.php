@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 
 class ApiController extends AbstractController
@@ -23,7 +24,33 @@ class ApiController extends AbstractController
      */
     public function img_upload($name, Request $request)
     {
-        dd($name);
+        dd($_FILES);
+        if ($request->headers->get('Content-Type') === 'application/json') {
+            $data = json_decode($request->getContent());
+
+
+            dd($data);
+            $fileinfo = $this->extractDataFromFileName($data->file);
+            $fileinfo['img'] = $data->img;
+
+            if ($this->saveUpload($fileinfo) !== false) {
+                echo sprintf('<img src="%s" />', '/images/recycle' . $fileinfo['filename']);
+            }
+        } 
+        else {
+            dd('opps');
+            /** @var UploadedFile $uploadedFile */
+            $uploadedFile = $request->files->get('reference');
+        }
+        return $this->render('api/index.html.twig', [
+            'controller_name' => 'ApiController',
+        ]);
+    }
+    /**
+     * @Route("/api/recycle/image/", name="recycle_json_upload")
+     */
+    public function json_upload(Request $request)
+    {
         dd($_FILES);
         if ($request->headers->get('Content-Type') === 'application/json') {
             $data = json_decode($request->getContent());
